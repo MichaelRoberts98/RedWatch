@@ -1,4 +1,5 @@
 import platform
+import net
 
 OsType = "Linux"
 
@@ -11,4 +12,5 @@ def init_globals():
         OsType = "Ubuntu"
 
 init_globals()
+LocalIp = get_ip()
 print OsType
