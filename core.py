@@ -1,11 +1,14 @@
-import vars
 import platform
 
-def init_globals():
-    temp_platform_var = platform.linux_distribution()[0]
-    if temp_platform_var == "CentOS Linux"
-        g_OsType = Centos
-    if temp_platform_var == "Ubuntu"
-        g_OsType = Ubuntu
+OsType = "Linux"
 
-print g_OsType
+def init_globals():
+    global OsType
+    temp_platform_var = platform.linux_distribution()[0]
+    if temp_platform_var == "CentOS Linux":
+        OsType = "Centos"
+    if temp_platform_var == "Ubuntu":
+        OsType = "Ubuntu"
+
+init_globals()
+print OsType
