@@ -1,0 +1,1 @@
+global g_OsType
