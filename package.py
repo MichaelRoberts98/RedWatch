@@ -16,10 +16,9 @@ apt-get:
 130 - Operation Cancelled
 '''
 
-
-def is_root():
     # TODO: Look into a safe root only operation instead of using effective id
-    return (os.geteuid == 0)
+def is_root():
+    return os.geteuid() == 0
 
 class package:
 
