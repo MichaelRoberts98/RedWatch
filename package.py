@@ -15,6 +15,12 @@ apt-get:
 100 - Failed somehow (not sudo, not found)
 130 - Operation Cancelled
 '''
+
+
+def is_root():
+    # TODO: Look into a safe root only operation instead of using effective id
+    return (os.geteuid == 0)
+
 class package:
 
     def __init__(self, OSType):
@@ -28,10 +34,6 @@ class package:
             if(self.packageList[i][OSType] == 1):
                 self.packageManager = self.packageList[i]
 
-
-    def is_root(self):
-        # TODO: Look into a safe root only operation instead of using effective id
-        return (os.geteuid == 0)
 
     def __does_package_exist(self):
         # With apt, this is impossible
