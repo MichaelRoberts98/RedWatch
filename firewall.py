@@ -11,8 +11,6 @@ import socket
 
 
 # TODO: Migrate this to core.py
-# TODO: Look into if we should be returning IP opjects instead of strings with IPs
-# TODO: Test if we're getting IPv6. Test with multiple stuff.
 def get_IP_true():
     # Credit:
     # Stackoverflow - 8529181 & 3503879/
