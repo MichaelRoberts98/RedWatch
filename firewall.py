@@ -9,6 +9,7 @@ import os
 import package
 import socket
 
+# TODO: For comptabability with threathunter.py, we should allow HTTPS and DNS
 
 # TODO: Migrate this to core.py
 def get_IP_true():
