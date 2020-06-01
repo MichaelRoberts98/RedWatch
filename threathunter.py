@@ -18,7 +18,7 @@ apikey = ""
 
 class threathunterpassive:
     # Once something has been sent off to VT and confirmed to be OK, we can just add it here. :)
-    whiteListedMD5 = ["2afee7c59fd529faff2642cee91e20b2","d2d347d82f1ab31fc0e72198dea4e315","fc88d9fc0f856dd1a418ad57b7e4192a","8d94f8449d16b85e20bb6759afd9352a","27308be1aa2459632bc2019024edc2e3"]
+    whiteListedMD5 = []
     requestedScan = []
     blackListedMD5 = []
     md5dict = {}
