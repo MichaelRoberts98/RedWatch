@@ -1,6 +1,7 @@
 import os
 import pwd
 import grp
+import time
 
 # Extracts file information from a file
 class file:
@@ -101,8 +102,6 @@ class watch_directory():
                 print('Unknown filetype, skipping %s' % pathname)
     
     def monitor_directory(self):
-        print("Monitoring directory: {0}".format(self.filepath))
-
         for f in self.files:
             f.monitor_change()
 
@@ -126,3 +125,32 @@ class watch_directory():
             self.owner = owner
 
         self.add_files(filepath, self.add_file)
+
+class monitor():
+    def __init__(self, wait_time=10):
+        self.wait_time = wait_time
+        self.files = []
+        self.directories = []
+
+    def start(self):
+        self.running = True
+
+        while self.running:
+            print("Monitoring files...")
+
+            for f in self.files:
+                f.monitor_change()
+            for d in self.directories:
+                d.monitor_directory()
+
+            time.sleep(self.wait_time)
+
+    def stop(self):
+        self.running = False
+
+    def add_directory(self, *args, **kwargs):
+        # Error handle the folder
+        self.directories.append(watch_directory(*args, **kwargs))
+
+    def add_file(self, *args, **kwargs):
+        self.files.append(watch_file(*args, **kwargs))
