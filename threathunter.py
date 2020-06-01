@@ -1,9 +1,15 @@
+# Christopher Fischer
+# 5/31/2020
+# Last Edit: 6/1/2020 2:00 AM
+# snake case naming used for convention
+# Python 3
+
+
+import os
 from time import sleep
 
 import psutil
-import os
 import requests
-import json
 
 # What defines mission accomplishment
 # run psutil.net_connections(), get a list of PIDS
