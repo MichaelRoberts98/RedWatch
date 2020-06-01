@@ -1,6 +1,6 @@
 # Christopher Fischer
 # 5/30/2020
-# Last Edit: 5/30/2020 7:00 PM
+# Last Edit: 5/31/2020 9:18 PM
 # snake case naming used for convention
 # Python 3
 
@@ -16,7 +16,7 @@ apt-get:
 130 - Operation Cancelled
 '''
 
-    # TODO: Look into a safe root only operation instead of using effective id
+# TODO: Look into a safe root only operation instead of using effective id
 def is_root():
     return os.geteuid() == 0
 
@@ -24,14 +24,14 @@ class package:
 
     def __init__(self, OSType):
         self.apt = {"Ubuntu": 1, "Centos": 0, "PackageNumber": 1, 100: "Error Occured", 130: "Operation was cancelled",
-               0: "Successful"}
+               0: "Successful", 25600 : "Not Found"}
         self.yum = {"Ubuntu": 0, "Centos": 1, "PackageNumber": 2}
         self.packageList = [self.apt,self.yum]
         self.OSType = OSType
         self.packageManager = None
         for i in self.packageList:
-            if(self.packageList[i][OSType] == 1):
-                self.packageManager = self.packageList[i]
+            if(i[OSType] == 1):
+                self.packageManager = i
 
 
     def __does_package_exist(self):
@@ -54,17 +54,16 @@ class package:
     def __install_package(self,packageName):
         # Try to install
         if (self.packageManager["PackageNumber"] == 1):
-            return os.system("apt-get install " + packageName)
+            return os.system("apt-get -y install " + packageName)
         if (self.packageManager["PackageNumber"] == 2):
             return os.system("yum install " + packageName)
         return False
 
     def install(self, packageName):
-        returnCode = self.__install_package(self, packageName)
+        returnCode = self.__install_package(packageName)
         if (returnCode == 0):
             return True
-        return_msg = self.packageList[self.packageManager].get(returnCode)
+        return_msg = self.packageManager[returnCode]
         if return_msg != None:
             print("[WARN] Class (package) function (install) message: " + return_msg)
         return False
-
