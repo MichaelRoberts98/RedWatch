@@ -28,7 +28,7 @@ slack_webhook_link = ""
 
 # This is one of the easiest ways to do this
 def __discord_webhook(message):
-    return requests.post(discord_webhook_link, json={"username": "DoubleAgent", "content": message})
+    return requests.post(discord_webhook_link, json={"username": "DoubleAgent", "content": message}).status_code
 
 
 # this wrapper allows us to retry a few times, with dynamic scaling if we're getting API errors or ratelimits.
@@ -54,7 +54,7 @@ def discord_message(message):
 # Groupme, untested
 
 def __groupme_webhook(message):
-    return requests.post(discord_webhook_link, data={"text": message, "bot_id": groupme_bot_id})
+    return requests.post(discord_webhook_link, data={"text": message, "bot_id": groupme_bot_id}).status_code
 
 
 def __groupme_try_webhook(message, number):
@@ -67,7 +67,7 @@ def __groupme_try_webhook(message, number):
     return code
 
 
-def slack_message(message):
+def groupme_message(message):
     try:
         code = __groupme_try_webhook(message, 0)
     except:
@@ -78,7 +78,7 @@ def slack_message(message):
 # Slack, untested.
 
 def __slack_webhook(message):
-    return requests.post(slack_webhook_link, json={"text": message})
+    return requests.post(slack_webhook_link, json={"text": message}).status_code
 
 
 def __slack_try_webhook(message, number):
