@@ -64,6 +64,10 @@ class threathunterpassive:
         print("Requesting Scan "+MD5)
         self.requestedScan.append(MD5)
 
+    def genMD5(self, path):
+        MD5 = os.popen("md5sum " + str(path)).read()
+        return (MD5.split(" ")[0])
+
     def genMD5s(self, BINS):
         # Now how friggen cool is this?
         # Why work harder, we can work smarter.

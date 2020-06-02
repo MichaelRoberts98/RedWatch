@@ -27,6 +27,7 @@ def grabpasswd():
 # /etc/ssh/sshd_config
 # Get SSH key paths and query
 
+
 class user:
     user = ""
     passwd = ""
