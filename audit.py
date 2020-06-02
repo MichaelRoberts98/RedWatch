@@ -5,21 +5,22 @@
 
 import grp
 import pwd
-
+from threathunter import genMD5
 
 # /etc/passwd files follow this format
 # username:passwd:UID:GID:Extra User Info:Home directory:shell type
 # Owned by root, otherwise 0644. Make sure not a link of any type
 # Store MD5
-
 def grabpasswd():
     users = []
-    passwd_file = open("/etc/passwd", "r")
-    info = passwd_file.readlines()
+    passwd_file_acc = open("/etc/passwd", "r")
+    info = passwd_file_acc.readlines()
     for line in info:
         userdata = line.split(":")
         users.append(user(int(userdata[2])))
-    passwd_file.close()
+    passwd_file_acc.close()
+    local_MD5 = genMD5("/etc/password")
+    return passwd_file(users, local_MD5)
 
 # /etc/group files follow this format
 # groupname:password:groupID:usernamelist(delimited by ,)
@@ -27,12 +28,14 @@ def grabpasswd():
 # Store MD5
 def grabgroup():
     groups = []
-    group_file = open("/etc/passwd", "r")
-    info = group_file.readlines()
+    group_file_acc = open("/etc/group", "r")
+    info = group_file_acc.readlines()
     for line in info:
         userdata = line.split(":")
         groups.append(groups(int(userdata[2])))
-    group_file.close()
+    group_file_acc.close()
+    local_MD5 = genMD5("/etc/group")
+    return group_file(groups, local_MD5)
 
 
 # /etc/ssh/sshd_config
