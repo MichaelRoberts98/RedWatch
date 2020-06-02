@@ -21,7 +21,6 @@ def is_root():
     return os.geteuid() == 0
 
 class package:
-
     def __init__(self, OSType):
         self.apt = {"Ubuntu": 1, "Centos": 0, "PackageNumber": 1, 100: "Error Occured", 130: "Operation was cancelled",
                0: "Successful", 25600 : "Not Found"}
@@ -32,7 +31,6 @@ class package:
         for i in self.packageList:
             if(i[OSType] == 1):
                 self.packageManager = i
-
 
     def __does_package_exist(self):
         # With apt, this is impossible

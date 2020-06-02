@@ -1,7 +1,9 @@
 import os
-import pwd
-import grp
 import time
+
+import grp
+import pwd
+
 
 # Extracts file information from a file
 class file:
@@ -71,15 +73,19 @@ class watch_file():
 
     def monitor_change(self):
         file_currrently = file(self.filepath)
-
         if (file_currrently.owner != self.owner):
             print('[WARNING]: {0} is owned by {1}, not by {2}'.format(file_currrently.filepath, file_currrently.owner, self.owner))
-
         if (file_currrently.group != self.group):
             print('[WARNING]: {0} is owned by group {1}, not by group {2}'.format(file_currrently.filepath, file_currrently.group, self.group))
-
         if (file_currrently.unix_perms != self.unix_perms):
-            print('[WARNING]: {0} is has permissions of {1}, not {2}'.format(file_currrently.filepath, file_currrently.unix_perms, self.unix_perms))       
+            print('[WARNING]: {0} is has permissions of {1}, not {2}'.format(file_currrently.filepath,
+                                                                             file_currrently.unix_perms,
+                                                                             self.unix_perms))
+        if (file_currrently.md5 != self.md5):
+            print('[WARNING]: {0} is has MD5 of {1}, not {2}'.format(file_currrently.filepath, file_currrently.md5,
+                                                                     self.md5sum))
+            # We're just going to update the MD5 so we don't get spammed
+            self.md5 = file_currrently.md5
 
     def __str__(self):
         return str(self.__class__) + ": " + str(self.__dict__)
