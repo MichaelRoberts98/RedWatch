@@ -33,7 +33,7 @@ def __discord_webhook(message):
 
 # this wrapper allows us to retry a few times, with dynamic scaling if we're getting API errors or ratelimits.
 def __discord_try_webhook(message, number):
-    code = discord_webhook(message)
+    code = __discord_webhook(message)
     if (number == 3):
         return code
     if (code == 429 or code == 502 or (code >= 500 and code <= 599)):
@@ -63,7 +63,7 @@ def __groupme_try_webhook(message, number):
         return code
     if (code != 200):
         time.sleep(5 * (number + 1))
-        return __groupme_webhook(message, number + 1)
+        return __groupme_try_webhook(message, number + 1)
     return code
 
 
@@ -82,7 +82,7 @@ def __slack_webhook(message):
 
 
 def __slack_try_webhook(message, number):
-    code = slack_webhook(message)
+    code = __slack_webhook(message)
     if (number == 3):
         return code
     if (code != 200):
