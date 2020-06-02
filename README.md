@@ -21,6 +21,7 @@ Detection: Detect types of attacks by looking for persistence/indicators of comp
 REDWATCH is not sponsored by/endorsed by United States Air Force/Department of Defense. However, we attempt to implement solutions compliant with United States Air Force Manual 17-1301, which in turns implements Air Force Policy Directive 17-1, and Department of Defense Instruction 8551.01. 
 
 DoD/NSA Documents Referenced list:
+```
 https://media.defense.gov/2019/Sep/09/2002180360/-1/-1/0/CONTINUOUSLY%20HUNT%20FOR%20NETWORK%20INTRUSIONS.PDF
 
 https://media.defense.gov/2019/Sep/09/2002180346/-1/-1/0/TRANSITION%20TO%20MULTI-FACTOR%20AUTHENTICATION.PDF
@@ -34,5 +35,5 @@ https://media.defense.gov/2019/Jul/16/2002158054/-1/-1/0/DEFENDING%20YOUR%20DNS%
 https://media.defense.gov/2019/Sep/09/2002180325/-1/-1/0/SEGMENT%20NETWORKS%20AND%20DEPLOY%20APPLICATION%20AWARE%20DEFENSES_20190905.PDF
 
 https://media.defense.gov/2020/Apr/22/2002285959/-1/-1/0/DETECT%20AND%20PREVENT%20WEB%20SHELL%20MALWARE.PDF
-
+```
 
