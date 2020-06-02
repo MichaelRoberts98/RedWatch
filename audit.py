@@ -1,9 +1,10 @@
 # Christopher Fischer
 # 6/1/2020
-# Last Edit: 6/1/2020 1:40 PM
+# Last Edit: 6/2/2020 12:40 AM
 # snake case naming used for convention
 # Python 3
 
+import pwd
 
 # /etc/passwd files follow this format
 # username:passwd:UID:GID:Extra User Info:Home directory:shell type
@@ -16,10 +17,7 @@ def grabpasswd():
     info = passwd.readlines()
     for line in info:
         userdata = line.split(":")
-        print(userdata)
-        users.append(user(userdata[0], userdata[1], userdata[2], userdata[3], userdata[4], userdata[5]))
-        print((userdata[0] + ":" + userdata[1] + ":" + userdata[2] + ":" + userdata[3] + ":" + userdata[4] + ":" +
-               userdata[5]))
+        users.append(user(int(userdata[2])))
 
 # /etc/group files follow this format
 # groupname:password:groupID:usernamelist(delimited by ,)
@@ -34,14 +32,17 @@ class user:
     passwd = ""
     UID = ""
     GID = ""
+    dir = ""
     extra = ""
     shell = ""
 
-    def __init__(self, username, password, usid, guid, extrainf, shellpath):
-        user = username
-        passwd = password
-        uid = usid
-        guid = guid
-        extra = extrainf
-        shell = shellpath
+    def __init__(self, uid):
+        struct = pwd.getpwuid(uid)
+        UID = uid
+        user = struct[0]
+        passwd = struct[1]
+        GID = struct[3]
+        dir = struct[4]
+        extra = struct[5]
+        shell = struct[6]
         return
