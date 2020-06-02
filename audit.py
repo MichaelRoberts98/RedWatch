@@ -39,14 +39,21 @@ def grabgroup():
 # Get SSH key paths and query
 
 
-class passwd:
+class passwd_file:
     users = []
     MD5 = ""
-
     def __init__(self, users, MD5):
         self.users = users
         self.MD5 = MD5
 
+
+class group_file:
+    group_list = []
+    MD5 = ""
+
+    def __init__(self, group, MD5):
+        self.group_list = group
+        self.MD5 = MD5
 
 class groups:
     def __init__(self, gid):
