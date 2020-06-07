@@ -11,8 +11,6 @@ Our development team currently consists of 6 regular contributors, with many oth
 ### Objectives
 Mitigation: Mitigate specific configuration errors/known exploits by applying additional countermeasures. 
 
-Migration: Migrate specific critical files and store them safely.
-
 Prevention: Prevent common attacks by hardening configurations at the operating system or application level.
 
 Detection: Detect types of attacks by looking for persistence/indicators of compromise.
