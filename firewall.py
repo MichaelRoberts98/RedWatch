@@ -95,4 +95,5 @@ class firewall:
             for ip in ports:
                 for i in range(0,32767):
                     if ports[ip][i] is 1:
+                        #These rules assume only TCP/not UDP
                         os.system("iptables -A INPUT -p tcp --dport "+str(i)+" -d "+str(ip)+ " -j ACCEPT")
